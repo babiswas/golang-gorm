@@ -37,3 +37,18 @@ func Migration() *gorm.DB {
 	db.AutoMigrate(&Person{})
 	return db
 }
+
+func test_task(db *gorm.DB) {
+	p := Person{Name: "Bapa", Email: "bapa@gmail.com"}
+	result := db.Select("Name", "Email").Create(&p)
+	fmt.Println(p.ID)
+	user1 := Person{Name: "Rama", Email: "rama@gmail.com"}
+	db.Create(&user1)
+	users := []Person{{Name: "Sita", Email: "sita@gmail.com"}, {Name: "Geeta", Email: "geeta@gmail.com"}}
+	db.Create(&users)
+	fmt.Println(result)
+}
+
+func Create_map(db *gorm.DB) {
+	db.Model(&Person{}).Create([]map[string]interface{}{{"Name": "Ravan", "Email": "ravan@gmail.com"}, {"Name": "Mintu", "Email": "mintu@gmail.com"}})
+}

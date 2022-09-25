@@ -15,12 +15,5 @@ func handle_error(err error) {
 
 func main() {
 	db := DB.Migration()
-	p := DB.Person{Name: "Bapa", Email: "bapa@gmail.com"}
-	result := db.Select("Name", "Email").Create(&p)
-	fmt.Println(p.ID)
-	user1 := DB.Person{Name: "Rama", Email: "rama@gmail.com"}
-	db.Create(&user1)
-	users := []DB.Person{{Name: "Sita", Email: "sita@gmail.com"}, {Name: "Geeta", Email: "geeta@gmail.com"}}
-	db.Create(&users)
-	fmt.Println(result)
+	DB.Create_map(db)
 }
